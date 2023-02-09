@@ -72,17 +72,15 @@ class CategoryUnitTest extends TestCase
 
     public function testExceptionName() 
     {
-        try 
-        {
+        try {
             $category = new Category(
                 name: 'Ca',
                 description: 'Desctiption test',
             );
 
             $this->assertTrue(false);
-        } 
-        catch(Throwable $th) 
-        {
+            
+        } catch(Throwable $th) {
             $this->assertInstanceOf(EntityValidationException::class, $th);
         }
     }

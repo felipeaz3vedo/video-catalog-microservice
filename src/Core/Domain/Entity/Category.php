@@ -36,7 +36,6 @@ class Category
         $this->description = $description;
 
         $this->validate();
-
     }
 
     public function validate()
