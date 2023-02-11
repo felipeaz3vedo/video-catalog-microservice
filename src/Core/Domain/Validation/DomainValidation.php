@@ -11,5 +11,26 @@ class DomainValidation
         if (empty($value)) {
             throw new EntityValidationException(($exceptionMessage ?? 'Should not be empty or null'));
         }
+    }     
+
+    public static function strMaxLength(string $value, int $length = 255, string $exceptionMessage = null)
+    {
+        if(strlen($value) > $length) {
+            throw new EntityValidationException(($exceptionMessage ?? "The value must not be greather than {$length} characters"));
+        }
+    }
+
+    public static function strMinLength(string $value, int $length = 2, string $exceptionMessage = null)
+    {
+        if(strlen($value) < $length) {
+            throw new EntityValidationException(($exceptionMessage ?? "The value must not be smaller than {$length} characters"));
+        }
+    }
+
+    public static function strCanNullAndMaxLenght(string $value = null, int $length = 255, string $exceptionMessage = null)
+    {
+        if($value != null && strlen($value) > $length) {
+            throw new EntityValidationException(($exceptionMessage ?? "The value must not be smaller than {$length} characters"));
+        }
     }
 }
