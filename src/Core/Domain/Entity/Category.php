@@ -9,7 +9,7 @@ use DateTime;
 
 class Category
 {
-    use MethodsMagicsTrait ;
+    use MethodsMagicsTrait;
     
     public function __construct
     (

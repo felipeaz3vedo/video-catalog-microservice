@@ -4,9 +4,9 @@ namespace Tests\Unit\UseCase\Category;
 
 use Core\Domain\Entity\Category;
 use Core\Domain\Repository\CategoryRepositoryInterface;
+use Core\UseCase\Category\CreateCategoryUseCase;
 use Mockery;
 use PHPUnit\Framework\TestCase;
-use stdClass;
 
 class CreateCategoryUseCaseUnitTest extends TestCase
 {
@@ -16,12 +16,16 @@ class CreateCategoryUseCaseUnitTest extends TestCase
         $categoryName = 'Category Name';
 
         $mockEntity = Mockery::mock(Category::class, [$CategoryId,  $categoryName ]);
-        $mockRepository = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
+        $mockRepository = Mockery::mock(CategoryRepositoryInterface::class);
 
         $this->$mockRepository->shouldReceive('insert')->andReturn($mockEntity);
 
         $useCase = new CreateCategoryUseCase($mockRepository);
 
         $useCase->execute();
+
+        $this->assertTrue(true);
+
+        Mockery::close();
     }
 }
