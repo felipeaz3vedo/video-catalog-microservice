@@ -16,7 +16,7 @@ class CreateCategoryUseCaseUnitTest extends TestCase
         $categoryName = 'Category Name';
 
         $mockEntity = Mockery::mock(Category::class, [$CategoryId,  $categoryName ]);
-        $mockRepository = Mockery::mock(CategoryRepositoryInterface::class);
+        $mockRepository = Mockery::mock(stdClass::class, CategoryRepositoryInterface::class);
 
         $this->$mockRepository->shouldReceive('insert')->andReturn($mockEntity);
 

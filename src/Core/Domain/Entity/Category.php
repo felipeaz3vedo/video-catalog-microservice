@@ -11,8 +11,7 @@ class Category
 {
     use MethodsMagicsTrait;
     
-    public function __construct
-    (
+    public function __construct(
         protected Uuid|string $id = '',
         protected string $name = '',
         protected string $description = '',
@@ -44,7 +43,7 @@ class Category
         $this->validate();
     }
 
-    public function validate()
+    private function validate()
     {
        DomainValidation::strMaxLength($this->name);
        DomainValidation::strMinLength($this->name);
